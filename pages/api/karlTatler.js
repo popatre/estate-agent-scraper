@@ -10,25 +10,22 @@ export default function handler(req, res) {
         //await page.screenshot({path:"tester.png"})
 
         const grabItem = await page.evaluate(() => {
-            const pgTag = document.querySelectorAll(
-                ".styled-block__heading, .styled-block__subheading, .styled-block__intro, .styled-block__status"
-            );
+            const pgTag = document.querySelectorAll("h1, h2");
             const listings = [];
 
             pgTag.forEach((tag) => {
                 listings.push(tag.innerText);
             });
-
             return listings;
         });
+
+        console.log(grabItem, "*****");
 
         if (grabItem) {
             const formattedResults = [];
 
-            for (let i = 0; i < grabItem.length; i += 4) {
-                const formattedStr = `${grabItem[i]} % ${grabItem[i + 1]} % ${
-                    grabItem[i + 2]
-                } % ${grabItem[i + 3]} `;
+            for (let i = 0; i < grabItem.length; i += 2) {
+                const formattedStr = `${grabItem[i]} % ${grabItem[i + 1]}  `;
 
                 formattedResults.push(formattedStr);
             }
@@ -47,6 +44,6 @@ export default function handler(req, res) {
     };
 
     scrapeListings(
-        "https://www.christinsley.co.uk/merseyside/birkdale/sales/up-to-150000/within-0-25-miles"
+        "https://www.karltatler.com/merseyside/wirral/sales/tag-house/from-0-bed/from-20000/up-to-130000/most-recent-first"
     );
 }

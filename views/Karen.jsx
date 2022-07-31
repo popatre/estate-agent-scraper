@@ -39,6 +39,9 @@ export default function Karen({}) {
                 setClicked={setClicked}
                 setListings={setListings}
             />
+            <a href="https://www.karenpotter.co.uk/Search?listingType=5&category=1&statusids=1%2C3%2C4%2C9%2C10%2C16&obc=Price&obd=Descending&areainformation=4&radius=1609&minprice=&maxprice=150000&bedrooms=&dbsids=&perpage=21&page=1">
+                Website
+            </a>
             {loading ? (
                 <p>Getting listings from Karen's site</p>
             ) : (

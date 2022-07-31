@@ -11,7 +11,11 @@ export default function ChrisTins({}) {
         setLoading(true);
         return getListings("http://localhost:3000/api/chrisTin").then(
             (currListings) => {
-                setListings(currListings);
+                const formattedListings = currListings.map((item) => {
+                    const [title, price, desc, location] = item.split("%");
+                    return { title, price, desc, location };
+                });
+                setListings(formattedListings);
                 setLoading(false);
             }
         );
@@ -26,13 +30,23 @@ export default function ChrisTins({}) {
                 setClicked={setClicked}
                 setListings={setListings}
             />
+            <a href="https://www.christinsley.co.uk/merseyside/birkdale/sales/up-to-150000/within-0-25-miles">
+                Website
+            </a>
             {loading ? (
                 <p>Getting listings from Chris's site</p>
             ) : (
-                <div>
+                <div className="listings">
                     <ul>
                         {listings.map((house) => {
-                            return <li>{house}</li>;
+                            return (
+                                <li>
+                                    <h2>{house.title}</h2>
+                                    <p>{house.price}</p>
+                                    <p>{house.desc}</p>
+                                    <p>{house.location}</p>
+                                </li>
+                            );
                         })}
                     </ul>
                 </div>
