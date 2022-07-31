@@ -45,15 +45,7 @@ export default function handler(req, res) {
                 formattedResults.push(formattedStr);
             }
 
-            const filtered = formattedResults.filter((item) => {
-                return (
-                    !item.includes("Sold") &&
-                    !item.includes("flat") &&
-                    !item.includes("Flat")
-                );
-            });
-
-            res.status(200).json({ listings: filtered });
+            res.status(200).json({ listings: formattedResults });
         }
         await browser.close();
     };

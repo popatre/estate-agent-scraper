@@ -15,7 +15,15 @@ export default function ChrisTins({}) {
     const getChrisListings = () => {
         setLoading(true);
         return getListings(url).then((currListings) => {
-            const formattedListings = currListings.map((item) => {
+            const filtered = currListings.filter((item) => {
+                return (
+                    !item.includes("Sold") &&
+                    !item.includes("flat") &&
+                    !item.includes("Flat")
+                );
+            });
+
+            const formattedListings = filtered.map((item) => {
                 const [title, price, desc, location] = item.split("%");
                 return { title, price, desc, location };
             });
