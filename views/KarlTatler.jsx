@@ -2,7 +2,15 @@ import Button from "../components/button";
 import { getListings } from "../apiCalls/api";
 import { useState } from "react";
 
+export async function getStaticProps(context) {
+    return {
+        props: {}, // will be passed to the page component as props
+    };
+}
+
 export default function KarlTatler({}) {
+    var currentUrl = window.location.href;
+    console.log(currentUrl);
     const [listings, setListings] = useState([]);
     const [loading, setLoading] = useState(false);
     const [clicked, setClicked] = useState(false);
