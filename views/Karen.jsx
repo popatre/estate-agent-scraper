@@ -7,27 +7,30 @@ export default function Karen({}) {
     const [loading, setLoading] = useState(false);
     const [clicked, setClicked] = useState(false);
 
+    const url =
+        process.env.NODE_ENV === "production"
+            ? "https://estate-agent-scraper.vercel.app/api/karen"
+            : "http://localhost:3000/api/karen";
+
     const getKarensListings = () => {
         setLoading(true);
-        getListings("http://localhost:3000/api/karen").then(
-            (currentListings) => {
-                const formattedArray = [];
+        getListings(url).then((currentListings) => {
+            const formattedArray = [];
 
-                for (let i = 0; i < currentListings.length; i += 2) {
-                    const formattedString = `${currentListings[i]} - ${
-                        currentListings[i + 1]
-                    }`;
-                    formattedArray.push(formattedString);
-                }
-
-                const filtered = formattedArray.filter((item) => {
-                    return !item.includes("Sold");
-                });
-
-                setListings(filtered);
-                setLoading(false);
+            for (let i = 0; i < currentListings.length; i += 2) {
+                const formattedString = `${currentListings[i]} - ${
+                    currentListings[i + 1]
+                }`;
+                formattedArray.push(formattedString);
             }
-        );
+
+            const filtered = formattedArray.filter((item) => {
+                return !item.includes("Sold");
+            });
+
+            setListings(filtered);
+            setLoading(false);
+        });
     };
 
     return (

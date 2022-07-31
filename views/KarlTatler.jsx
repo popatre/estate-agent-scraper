@@ -13,18 +13,21 @@ export default function KarlTatler({}) {
     const [loading, setLoading] = useState(false);
     const [clicked, setClicked] = useState(false);
 
+    const url =
+        process.env.NODE_ENV === "production"
+            ? "https://estate-agent-scraper.vercel.app/api/karlTatler"
+            : "http://localhost:3000/api/karlTatler";
+
     const getKarlsListings = () => {
         setLoading(true);
-        return getListings("http://localhost:3000/api/karlTatler").then(
-            (currListings) => {
-                const formattedListings = currListings.map((item) => {
-                    const [location, price] = item.split("%");
-                    return { location, price };
-                });
-                setListings(formattedListings);
-                setLoading(false);
-            }
-        );
+        return getListings(url).then((currListings) => {
+            const formattedListings = currListings.map((item) => {
+                const [location, price] = item.split("%");
+                return { location, price };
+            });
+            setListings(formattedListings);
+            setLoading(false);
+        });
     };
 
     return (
