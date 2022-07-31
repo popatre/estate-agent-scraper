@@ -16,8 +16,12 @@ export default function Button({
     };
 
     return !clicked ? (
-        <button onClick={handleClick}>Listings from {nameOfAgent}</button>
+        <button className="agent-btn" onClick={handleClick}>
+            Listings from {nameOfAgent}
+        </button>
     ) : (
-        <button onClick={handleOtherClick}>Hide Listings</button>
+        <button className="agent-btn" onClick={handleOtherClick}>
+            Hide Listings
+        </button>
     );
 }

@@ -18,7 +18,7 @@ export default function ChrisTins({}) {
     };
 
     return (
-        <section>
+        <section className="container">
             <Button
                 nameOfAgent="Chris Tinsley"
                 scrapeFunc={getChrisListings}

@@ -20,14 +20,18 @@ export default function Karen({}) {
                     formattedArray.push(formattedString);
                 }
 
-                setListings(formattedArray);
+                const filtered = formattedArray.filter((item) => {
+                    return !item.includes("Sold");
+                });
+
+                setListings(filtered);
                 setLoading(false);
             }
         );
     };
 
     return (
-        <section>
+        <section className="container">
             <Button
                 nameOfAgent="Karen Potter"
                 scrapeFunc={getKarensListings}
@@ -38,7 +42,7 @@ export default function Karen({}) {
             {loading ? (
                 <p>Getting listings from Karen's site</p>
             ) : (
-                <div>
+                <div className="listings">
                     <ul>
                         {listings.map((house) => {
                             return <li>{house}</li>;
