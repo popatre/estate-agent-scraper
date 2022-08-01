@@ -1,6 +1,7 @@
 import Button from "../components/button";
 import { getListings } from "../apiCalls/api";
 import { useState } from "react";
+import { Hearts } from "react-loader-spinner";
 
 export default function ChrisTins({}) {
     const [loading, setLoading] = useState(false);
@@ -45,7 +46,15 @@ export default function ChrisTins({}) {
                 Website
             </a>
             {loading ? (
-                <p>Getting listings from Chris's site</p>
+                <Hearts
+                    height="80"
+                    width="80"
+                    radius="9"
+                    color="green"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle
+                    wrapperClass
+                />
             ) : (
                 <div className="listings">
                     <ul>

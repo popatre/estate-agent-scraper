@@ -1,6 +1,7 @@
 import Button from "../components/button";
 import { getListings } from "../apiCalls/api";
 import { useState } from "react";
+import { Circles } from "react-loader-spinner";
 
 export async function getStaticProps(context) {
     return {
@@ -43,7 +44,15 @@ export default function KarlTatler({}) {
                 Website
             </a>
             {loading ? (
-                <p>Getting listings from Karl's site</p>
+                <Circles
+                    height="80"
+                    width="80"
+                    radius="9"
+                    color="green"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle
+                    wrapperClass
+                />
             ) : (
                 <div className="listings">
                     <ul>

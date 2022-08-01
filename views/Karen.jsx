@@ -1,6 +1,7 @@
 import Button from "../components/button";
 import { getListings } from "../apiCalls/api";
 import { useState } from "react";
+import { Circles } from "react-loader-spinner";
 
 export default function Karen({}) {
     const [listings, setListings] = useState([]);
@@ -24,10 +25,10 @@ export default function Karen({}) {
                 formattedArray.push(formattedString);
             }
 
-            const filtered = formattedArray.filter((item) => {
+            let filtered = formattedArray.filter((item) => {
                 return !item.includes("Sold");
             });
-
+            filtered.length === 0 ? (filtered = ["No listings"]) : null;
             setListings(filtered);
             setLoading(false);
         });
@@ -46,7 +47,15 @@ export default function Karen({}) {
                 Website
             </a>
             {loading ? (
-                <p>Getting listings from Karen's site</p>
+                <Circles
+                    height="80"
+                    width="80"
+                    radius="9"
+                    color="green"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle
+                    wrapperClass
+                />
             ) : (
                 <div className="listings">
                     <ul>
