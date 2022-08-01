@@ -14,8 +14,7 @@ export default function KarlTatler({}) {
     const [loading, setLoading] = useState(false);
     const [clicked, setClicked] = useState(false);
 
-    const url =
-        "https://estate-scraper0404.herokuapp.com/api/christins/api/karltatler";
+    const url = "https://estate-scraper0404.herokuapp.com/api/karltatler";
 
     const getKarlsListings = () => {
         setLoading(true);
