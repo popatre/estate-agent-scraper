@@ -8,10 +8,7 @@ export default function ChrisTins({}) {
     const [listings, setListings] = useState([]);
     const [clicked, setClicked] = useState(false);
 
-    const url =
-        process.env.NODE_ENV === "production"
-            ? "https://estate-agent-scraper.vercel.app/api/chrisTin"
-            : "http://localhost:3000/api/chrisTin";
+    const url = "https://estate-scraper0404.herokuapp.com/api/christins";
 
     const getChrisListings = () => {
         setLoading(true);

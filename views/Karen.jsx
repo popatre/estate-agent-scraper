@@ -8,10 +8,7 @@ export default function Karen({}) {
     const [loading, setLoading] = useState(false);
     const [clicked, setClicked] = useState(false);
 
-    const url =
-        process.env.NODE_ENV === "production"
-            ? "https://estate-agent-scraper.vercel.app/api/karen"
-            : "http://localhost:3000/api/karen";
+    const url = "https://estate-scraper0404.herokuapp.com/api/karen";
 
     const getKarensListings = () => {
         setLoading(true);

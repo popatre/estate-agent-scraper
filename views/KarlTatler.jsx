@@ -15,9 +15,7 @@ export default function KarlTatler({}) {
     const [clicked, setClicked] = useState(false);
 
     const url =
-        process.env.NODE_ENV === "production"
-            ? "https://estate-agent-scraper.vercel.app/api/karlTatler"
-            : "http://localhost:3000/api/karlTatler";
+        "https://estate-scraper0404.herokuapp.com/api/christins/api/karltatler";
 
     const getKarlsListings = () => {
         setLoading(true);
