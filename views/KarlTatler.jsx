@@ -65,10 +65,16 @@ export default function KarlTatler({}) {
                                     {[
                                         "CH46",
                                         "CH45",
-                                        "CH49",
-                                        "CH47",
                                         "CH62",
+                                        "CH43",
+                                        "CH66",
+                                        "CH63",
+                                        "CH49",
+                                        "CH61",
                                         "CH47",
+                                        "CH64",
+                                        "CH48",
+                                        "CH60",
                                     ].includes(postcode[0]) ? (
                                         <h3 style={{ color: "green" }}>
                                             {house.location}
